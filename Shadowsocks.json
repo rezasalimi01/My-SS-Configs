@@ -1,0 +1,545 @@
+//profile-title: Reza SS Configs 🇪🇺
+//profile-update-interval: 1
+//subscription-userinfo: upload=unlimited; download=unlimited; total=unlimited; expire=unlimited
+
+
+
+
+
+{
+  "dns": {
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    },
+    "independent_cache": true,
+    "rules": [
+      {
+        "domain": [
+          "dnslow.me"
+        ],
+        "server": "dns-direct"
+      },
+      {
+        "rule_set": [
+          "geosite-ir"
+        ],
+        "server": "dns-direct"
+      },
+      {
+        "disable_cache": true,
+        "rule_set": [
+          "geosite-category-ads-all"
+        ],
+        "server": "dns-block"
+      },
+      {
+        "disable_cache": true,
+        "inbound": [
+          "tun-in"
+        ],
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns-fake"
+      }
+    ],
+    "servers": [
+      {
+        "address": "https://dnslow.me/dns-query",
+        "address_resolver": "dns-direct",
+        "strategy": "prefer_ipv4",
+        "tag": "dns-remote"
+      },
+      {
+        "address": "76.76.10.2",
+        "address_resolver": "dns-local",
+        "detour": "direct",
+        "strategy": "prefer_ipv4",
+        "tag": "dns-direct"
+      },
+      {
+        "address": "local",
+        "detour": "direct",
+        "tag": "dns-local"
+      },
+      {
+        "address": "rcode://success",
+        "tag": "dns-block"
+      },
+      {
+        "address": "fakeip",
+        "tag": "dns-fake"
+      }
+    ]
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "../cache/cache.db",
+      "store_fakeip": true
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "../files/dashboard",
+      "external_ui_download_url": "http://www.gstatic.com/generate_204"
+    }
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "listen_port": 6450,
+      "override_address": "8.8.8.8",
+      "override_port": 53,
+      "tag": "dns-in",
+      "type": "direct"
+    },
+    {
+      "domain_strategy": "",
+      "endpoint_independent_nat": true,
+      "inet4_address": [
+        "172.19.0.1/28"
+      ],
+      "inet6_address": [
+        "fdfe:dcba:9876::1/126"
+      ],
+      "mtu": 9000,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "stack": "mixed",
+      "tag": "tun-in",
+      "type": "tun"
+    },
+    {
+      "domain_strategy": "",
+      "listen": "127.0.0.1",
+      "listen_port": 2080,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "tag": "mixed-in",
+      "type": "mixed"
+    }
+  ],
+  "log": {
+    "level": "panic"
+  },
+  "outbounds": [
+    {
+      "method": "aes-256-gcm",
+      "password": "faBAoD54k87UJG7",
+      "server": "217.182.198.219",
+      "server_port": 2376,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇩🇪 OVH - 1"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "Y6R9pAtvxxzmGC",
+      "server": "217.182.198.219",
+      "server_port": 3389,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇩🇪 OVH - 2"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "77.72.5.113",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇬🇧 Krystal Hosting - 1"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "77.72.5.150",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇬🇧 Krystal Hosting - 2"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "KixLvKzwjekG00rm",
+      "server": "51.68.206.229",
+      "server_port": 8080,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇬🇧 OVH"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "195.154.169.198",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇫🇷 Scaleway"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "TEzjfAYq2IjtuoS",
+      "server": "54.36.174.181",
+      "server_port": 6679,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇫🇷 OVH 1st ip"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "pKEW8JPByTVTLtM",
+      "server": "149.202.82.172",
+      "server_port": 4444,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇫🇷 OVH 2st ip"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "PCnnH6SQSnfoS27",
+      "server": "51.77.53.200",
+      "server_port": 8091,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇵🇱 OVH"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "185.180.12.81",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇦🇹 Datacamp"
+    },
+    {
+      "method": "aes-128-cfb",
+      "password": "shadowsocks",
+      "server": "156.146.62.160",
+      "server_port": 443,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇨🇭 Datacamp"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "121.127.46.147",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇸🇪 Datacamp"
+    },
+    {
+      "method": "aes-128-cfb",
+      "password": "shadowsocks",
+      "server": "109.201.152.181",
+      "server_port": 443,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇳🇱 NFOrce Environment"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "192.71.249.78",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇧🇪 M247 Europe"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "194.71.126.31",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇷🇸 M247 Europe"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "194.14.217.115",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇷🇴 M247 Europe"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "192.36.27.116",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇩🇰 M247 Europe"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "5.188.6.8",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇺🇦 G-Core Labs "
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "92.38.163.53",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇱🇺 G-Core Labs"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "146.185.248.22",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇦🇲 G-Core Labs"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "BwcAUZk8hUFAkDGN",
+      "server": "5.188.181.201",
+      "server_port": 9031,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇪🇸 Melbikomas"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "XPtzA9sCug3SPR4c",
+      "server": "213.183.63.69",
+      "server_port": 9025,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇧🇬 Melbikomas"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "w5drAL7PfCIwQ2ycUuoDsV2Ls",
+      "server": "212.113.106.243",
+      "server_port": 13022,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇦🇹 Aeza International"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "185.90.61.153",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇳🇴 BrainStorm Network"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "qM1DbUcROQ4CeDjcCEX4oJ",
+      "server": "65.108.142.67",
+      "server_port": 47146,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇫🇮 Hetzner"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "46.183.184.60",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇭🇷 Akton d.o.o."
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "185.164.35.9",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇧🇦 Globalhost"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "31.171.153.181",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇦🇱 Keminet Ltd"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "192.71.244.150",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇸🇮 Optimus IT"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "23.92.127.134",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇮🇪 Inter Connects"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "46.183.185.15",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇲🇰 Akton d.o.o."
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "37.235.49.152",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇮🇸 Advania Island"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "p9z5BVADH2YFs3MN",
+      "server": "45.89.52.66",
+      "server_port": 9040,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇹🇷 Stark Industries"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "192.121.87.147",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇲🇩 Trabia SRL"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "cp8pRSUAyLhTfVWH",
+      "server": "103.172.116.79",
+      "server_port": 9064,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇸🇬 Melbikomas"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "37.235.55.42",
+      "server_port": 989,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇮🇲 Netcetera"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "kDWvXYZoTBcGkC4",
+      "server": "38.121.43.97",
+      "server_port": 8881,
+      "type": "shadowsocks",
+      "domain_strategy": "",
+      "tag": "🇺🇸 Cogent Communications"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    },
+    {
+      "tag": "bypass",
+      "type": "direct"
+    },
+    {
+      "tag": "block",
+      "type": "block"
+    },
+    {
+      "tag": "dns-out",
+      "type": "dns"
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "rule_set": [
+      {
+        "format": "binary",
+        "path": "/storage/emulated/0/Android/data/fr.husi/files/geo/geosite-ir.srs",
+        "tag": "geosite-ir",
+        "type": "local"
+      },
+      {
+        "format": "binary",
+        "path": "/storage/emulated/0/Android/data/fr.husi/files/geo/geoip-ir.srs",
+        "tag": "geoip-ir",
+        "type": "local"
+      },
+      {
+        "format": "binary",
+        "path": "/storage/emulated/0/Android/data/fr.husi/files/geo/geosite-category-ads-all.srs",
+        "tag": "geosite-category-ads-all",
+        "type": "local"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "dns-out",
+        "port": [
+          53
+        ]
+      },
+      {
+        "inbound": [
+          "dns-in"
+        ],
+        "outbound": "dns-out"
+      },
+      {
+        "outbound": "bypass",
+        "rule_set": [
+          "geosite-ir"
+        ]
+      },
+      {
+        "outbound": "bypass",
+        "rule_set": [
+          "geoip-ir"
+        ]
+      },
+      {
+        "outbound": "block",
+        "rule_set": [
+          "geosite-category-ads-all"
+        ]
+      },
+      {
+        "ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ],
+        "outbound": "block",
+        "source_ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ]
+      }
+    ]
+  }
+      }
